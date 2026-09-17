@@ -23,4 +23,12 @@ else:
         destination = "D"
 print(destination)
 
-#WOOOOOOHOOOO it works let's goooo
+if destination == "inspect":
+    print("HOLD")
+elif shape == "CONE" or (mass > 1000):
+    print("CRATE")
+elif shape == "BALL":
+    print("PADDED")
+else:
+    print("BOX")
+
