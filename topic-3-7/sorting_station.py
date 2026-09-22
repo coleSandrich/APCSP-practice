@@ -13,8 +13,7 @@ if condition == "D" or (size > 50 or mass > 2000):
     destination = "inspect"
 else:
     if color == "RED" and (size > 10):
-       destination = "B"
-       
+       destination = "B"   
     elif shape == "BALL":
         destination = "A"
     if color == ("BLU" or "GRN") and (shape == "CUBE") and (size < 10):

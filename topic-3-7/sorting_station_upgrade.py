@@ -6,10 +6,9 @@ color = str(label[4 : 7])
 size = int(label[7 : 10])
 mass = int(label[10 : 14])
 condition = str(label[14])
-
-
 destination = "E"
-if condition == "D" or (size > 50 or mass > 2000):
+#ugrade 2
+if condition == ("D" or (size > 50 or mass > 2000)) and (not((condition == "N") and (shape == "CUBE") and (size <= 60) and (mass <= 2500))):
     destination = "inspect"
 else:
     if color == "RED" and (size > 10):
@@ -23,6 +22,7 @@ else:
         destination = "D"
 print(destination)
 
+#upgrade 1
 if destination == "inspect":
     print("HOLD")
 elif shape == "CONE" or (mass > 1000):
@@ -32,3 +32,5 @@ elif shape == "BALL":
 else:
     print("BOX")
 
+#upgrade 2 an exception
+((condition == "N") and (shape == "CUBE") and (size <= 60) and (mass <= 2500))
