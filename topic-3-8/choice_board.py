@@ -13,15 +13,15 @@ dataSet = [0, 1, 1, 2, 3, 5, 8, 13, 21]
 
 
 minValue = dataSet[0]
-for i in range(0, len(dataSet), 1):
- if dataSet[i] < minValue:
-    minValue = dataSet[i]
+for i in dataSet: #changed from index method to enhanced for loop
+ if  i < minValue:
+    minValue = i
 print(minValue)
 
 maxValue = dataSet[0]
-for i in range(0, len(dataSet), 1):
- if dataSet[i] > maxValue:
-    maxValue = dataSet[i]
+for i in dataSet:  #changed from index method to enhanced for loop
+ if i > maxValue:
+    maxValue = i
 print(maxValue)
 
 
@@ -29,22 +29,22 @@ print(maxValue)
 Quartile1 = float((dataSet[2] + dataSet[3]) / 2)
 Quartile3 = float((dataSet[6] + dataSet[7]) / 2)
 IQR = Quartile3 - Quartile1 
-for i in range(0, len(dataSet), 1):
-    if (dataSet[i] < (Quartile1- 1.5*float(IQR))) or (dataSet[i] > (Quartile3 + 1.5*float(IQR))):
-        print( "OUTLIERS:", dataSet[i] )
+for i in dataSet: #changed from index method to enhanced for loop
+    if (i < (Quartile1- 1.5*float(IQR))) or (i > (Quartile3 + 1.5*float(IQR))):
+        print( "OUTLIERS:", i )
 else:
     print("NO OUTLIERS")
     
 
 
-sum = 0
-for i in range( 0, len(dataSet), 1):
-    sum += dataSet[i]
+sum = 0 #changed from index method to enhanced for loop
+for i in dataSet:
+    sum += i
 mean = sum / len(dataSet)
 
 numerator = 0
-for i in range (0, len(dataSet), 1):
-   numerator += ((dataSet[i] - mean )*(dataSet[i] - mean))
+for i in dataSet: #changed from index method to enhanced for loop
+   numerator += ((i - mean )*(i - mean))
 radicand = (numerator / (len(dataSet) - 1 ))
 standardDev = math.sqrt(radicand)
 
@@ -57,4 +57,3 @@ zScore = (dataPoint - mean) / standardDev
 print(standardDev)
 print (zScore)
 
-#the next step for me if I had more time would be to append the user-inputted value into the dataSet
