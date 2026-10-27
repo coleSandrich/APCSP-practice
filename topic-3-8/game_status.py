@@ -27,7 +27,11 @@ def render_status(name, health, energy, elapsed_seconds, best_seconds, scores):
 
     # Build two bars. // keeps the whole-number part of the division.
     def make_bars(shown_type, max, width):
-       filled
+    bar_filled = 
+
+
+
+
     health_filled = shown_health * 10 // 100
     health_bar = "["
     for position in range(10):
