@@ -1,92 +1,69 @@
 """Game Status: refactor render_status without changing its behavior."""
+def recent_scores (scores):
+    total = 0
+    highest = scores[0]
+    strong_count = 0
+    for score in scores:
+        total += score
+        if score > highest:
+            highest = score
+        if score >= 80:
+            strong_count += 1
+        if total < 100:
+            level = "Rookie"
+        elif total < 250:
+            level = "Skilled"
+        else:
+            level = "Expert"
+    return total, highest, strong_count, level 
+ 
+def format_durations (general_seconds):
+    general_minutes = general_seconds // 60
+    general_remainder = general_seconds % 60
+    general_text = str(general_minutes) + ":"
+    if general_remainder < 10:
+            general_text += "0"
+    general_text += str(general_remainder)
+    return general_text
+
+def make_bars(shown_type, max):
+    type_filled = shown_type * 10 // max
+    type_bar = "["
+    for position in range(10):
+        if position < type_filled:
+            type_bar += "#"
+        else:
+            type_bar += "-"
+    type_bar += "]"
+    return type_bar
+
 def clamp (vital, min, max):
-     if vital < min:
+    if vital < min:
          vital = min
-     if vital > max:
+    if vital > max:
         vital = max
-        return vital
+    return vital
+    
 def render_status(name, health, energy, elapsed_seconds, best_seconds, scores):
     # Keep this function's name, parameters, and returned report.
     # Add your own helper functions above it.
 
 
-   shown_health = clamp(health, 0, 100)
-   shown_energy = clamp(energy, 0, 100)
-    # Bound the two meters.
-    #shown_health = health
- #   if shown_health < 0:
-  #      shown_health = 0
-   # elif shown_health > 100:
-   #     shown_health = 100
+    shown_health = clamp(health, 0, 100)
+    shown_energy = clamp(energy, 0, 60)
+        # Bound the two meters.
 
-   # shown_energy = energy
-  #  if shown_energy < 0:
-  #      shown_energy = 0
-   # elif shown_energy > 60:
-   #     shown_energy = 60
-
-    # Build two bars. // keeps the whole-number part of the division.
-    def make_bars(shown_type, max, width):
-    bar_filled = 
-
-
-
-
-    health_filled = shown_health * 10 // 100
-    health_bar = "["
-    for position in range(10):
-        if position < health_filled:
-            health_bar = health_bar + "#"
-        else:
-            health_bar = health_bar + "-"
-    health_bar = health_bar + "]"
-
-    energy_filled = shown_energy * 10 // 60
-    energy_bar = "["
-    for position in range(10):
-        if position < energy_filled:
-            energy_bar = energy_bar + "#"
-        else:
-            energy_bar = energy_bar + "-"
-    energy_bar = energy_bar + "]"
+        # Build two bars. // keeps the whole-number part of the division.
+    
+    health_bar = make_bars(shown_health, 100)
+    energy_bar = make_bars(shown_energy, 60)
 
     # Format two durations.
-    elapsed_minutes = elapsed_seconds // 60
-    elapsed_remainder = elapsed_seconds % 60
-    elapsed_text = str(elapsed_minutes) + ":"
-    if elapsed_remainder < 10:
-        elapsed_text = elapsed_text + "0"
-    elapsed_text = elapsed_text + str(elapsed_remainder)
-
-    best_minutes = best_seconds // 60
-    best_remainder = best_seconds % 60
-    best_text = str(best_minutes) + ":"
-    if best_remainder < 10:
-        best_text = best_text + "0"
-    best_text = best_text + str(best_remainder)
-
+    elapsed_text = format_durations(elapsed_seconds)
+    best_text = format_durations(best_seconds)
+   
     # Summarize the recent scores.
-    total = 0
-    for score in scores:
-        total = total + score
-
-    highest = scores[0]
-    for score in scores:
-        if score > highest:
-            highest = score
-
-    strong_count = 0
-    for score in scores:
-        if score >= 80:
-            strong_count = strong_count + 1
-
-    # Choose a level from the total.
-    if total < 100:
-        level = "Rookie"
-    elif total < 250:
-        level = "Skilled"
-    else:
-        level = "Expert"
+    total, highest, strong_count, level = recent_scores(scores)
 
     # Return one report. \n separates its lines; there is no final \n.
     report = "PLAYER: " + name
