@@ -30,14 +30,14 @@ def test_random_strategy_is_int():
 
 
 def test_game_result_draw():
-    assert game.game_result(rock, rock) == 0
-    assert game.game_result(paper, paper) == 0
-    assert game.game_result(paper, paper) == 0
+    assert game.game_result(0, 0) == 0
+    assert game.game_result(1, 1) == 0
+    assert game.game_result(2, 2) == 0
 
 def test_p1_winning_conditions():
-    assert game.game_result(rock, scissors) == 1
-    assert game.game_result(scissors, paper) == 1
-    assert game.game_result(paper, rock) == 1
+    assert game.game_result(0, 2) == 1
+    assert game.game_result(2, 1) == 1
+    assert game.game_result(1, 0) == 1
 
 
 
