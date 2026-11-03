@@ -30,15 +30,17 @@ def test_random_strategy_is_int():
 
 
 def test_game_result_draw():
-    assert game_result(rock, rock) == 0
-    assert game_result(paper, paper) == 0
-    assert game_result(paper, paper) == 0
+    assert game.game_result(rock, rock) == 0
+    assert game.game_result(paper, paper) == 0
+    assert game.game_result(paper, paper) == 0
 
 def test_p1_winning_conditions():
-    assert game_result(rock, scissors) == 1
-    assert game_result(scissors, paper) == 1
-    assert game_result(paper, rock) == 1
-    
-def test
+    assert game.game_result(rock, scissors) == 1
+    assert game.game_result(scissors, paper) == 1
+    assert game.game_result(paper, rock) == 1
+
+
+
+
 if __name__ == "__main__":
     raise SystemExit(pytest.main([__file__, "-q"]))
