@@ -30,11 +30,11 @@ def serve_customer(customer_number, drink_count):
     
 
 
-def main():
-    customer_number = int(input("Customer number: "))
-    sales = 0
-    for i in range(0, customer_number, 1):
+# def main():
+#     customer_number = int(input("Customer number: "))
+#     sales = 0
+#     for i in range(0, customer_number, 1):
     
-    print(serve_customer((), ()))
+#     #print(serve_customer((), ()))
     
-main()
+# #main():

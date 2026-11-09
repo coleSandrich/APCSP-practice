@@ -17,10 +17,10 @@ else:
     elif shape == "BALL":
         destination = "A"
     # if color == ("BLU" or "GRN") and (shape == "CUBE") and (size < 10):
-    if (color == "BLU" or color == "GRN") and (shape == "CUBE") and (size < 10):
+    if (color == "BLU" or color == "GRN") and (shape == "CUBE") and (size <= 10): #fixed 11/9/26. Better late than never.
         destination = "C"
     elif shape == "CUBE":
         destination = "D"
 print(destination)
 
-#WOOOOOOHOOOO it works let's goooo
+
